@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blood Pressure Stage Predictor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #d0e6f6, #f5e8e8);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 30px auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    h1.title {
+      text-align: center;
+      font-size: 36px;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    p.description {
+      text-align: center;
+      font-size: 16px;
+      color: #555;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    form {
+      margin-top: 30px;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    select, input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    select:focus, input[type="submit"]:hover {
+      border-color: #3498db;
+      box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
+    }
+
+    input[type="submit"] {
+      background-color: #3498db;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .result {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 22px;
+      color: #2c3e50;
+      font-weight: bold;
+      background: #e0f7fa;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .intro-section {
+      max-width: 700px;
+      margin: 30px auto;
+      background: linear-gradient(to right, #ffffff, #f5f7fa);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    }
+
+    .intro-section h1 {
+      text-align: center;
+      font-size: 34px;
+      color: #2c3e50;
+    }
+
+    .intro-section p {
+      text-align: center;
+      color: #555;
+      font-size: 16px;
+      line-height: 1.7;
+      margin-top: 15px;
+    }
+
+    .precaution-box {
+      max-width: 700px;
+      margin: 30px auto;
+      background: #fff8e1;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    }
+
+    .precaution-box h2 {
+      text-align: center;
+      font-size: 30px;
+      color: #d35400;
+      margin-bottom: 15px;
+    }
+
+    .precaution-box ul {
+      color: #444;
+      font-size: 16px;
+      line-height: 1.8;
+      padding-left: 20px;
+    }
+
+    .precaution-box ul li {
+      margin-bottom: 10px;
+    }
+
+    .precaution-box p {
+      text-align: center;
+      color: #999;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Intro Section -->
+  <div class="intro-section">
+    <h1>Understanding Blood Pressure 🫀</h1>
+    <p>
+      Blood pressure measures the force of blood against artery walls. It's shown in two numbers —
+      <strong>systolic</strong> (when the heart beats) and <strong>diastolic</strong> (when the heart rests).
+      Keeping it below 120/80 mmHg is ideal. Chronic high blood pressure increases the risk of stroke, heart disease, and vision issues.
+    </p>
+  </div>
+
+  <!-- Form Section -->
+  <div class="container">
+    <h1 class="title">Blood Pressure Stage Predictor</h1>
+    <p class="description">
+      This tool helps assess your blood pressure stage based on health indicators.
+      Fill out the form below and get an instant prediction.
+    </p>
+
+    <form action="/" method="post">
+      <label>Gender:</label>
+      <select name="gender" required>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+
+      <label>Age:</label>
+      <select name="Age" required>
+        <option value="18-34">18-34</option>
+        <option value="35-50">35-50</option>
+        <option value="51-64">51-64</option>
+        <option value="65+">65+</option>
+      </select>
+
+      <label>History:</label>
+      <select name="History" required>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <label>Patient:</label>
+      <select name="Patient" required>
+        <option value="New">New</option>
+        <option value="Returning">Returning</option>
+      </select>
+
+      <label>Take Medication:</label>
+      <select name="TakeMedication" required>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <label>Severity:</label>
+      <select name="Severity" required>
+        <option value="Mild">Mild</option>
+        <option value="Moderate">Moderate</option>
+        <option value="Severe">Severe</option>
+      </select>
+
+      <label>Breath Shortness:</label>
+      <select name="BreathShortness" required>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <label>Visual Changes:</label>
+      <select name="VisualChanges" required>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <label>Nose Bleeding:</label>
+      <select name="NoseBleeding" required>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <label>When Diagnosed:</label>
+      <select name="Whendiagnoused" required>
+        <option value="<1 Year">&lt;1 Year</option>
+        <option value="1 - 5 Years">1 - 5 Years</option>
+        <option value=">5 Years">&gt;5 Years</option>
+      </select>
+
+      <label>Systolic:</label>
+      <select name="Systolic" required>
+        <option value="90-120">90-120</option>
+        <option value="121-130">121-130</option>
+        <option value="131-140">131-140</option>
+        <option value="141-160">141-160</option>
+      </select>
+
+      <label>Diastolic:</label>
+      <select name="Diastolic" required>
+        <option value="60-80">60-80</option>
+        <option value="81-90">81-90</option>
+        <option value="91-100">91-100</option>
+      </select>
+
+      <label>Controlled Diet:</label>
+      <select name="ControlledDiet" required>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <input type="submit" value="🔍 Predict">
+    </form>
+
+    {% if prediction_text %}
+      <div class="result">{{ prediction_text }}</div>
+    {% endif %}
+  </div>
+
+  <!-- Precautions Section -->
+  <div class="precaution-box">
+    <h2>🛡️ PRECAUTIONS</h2>
+    {% if precautions %}
+      <ul>
+        {% for item in precautions %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No precautions to display yet. Submit the form above.</p>
+    {% endif %}
+  </div>
+
+</body>
+</html>
+
